@@ -35,47 +35,51 @@
         <h1>Port Scanner</h1>
         <p class="lead">Network Security Project : Master 2 MIAGE</p>
     </div>
-    
+
     <hr style="display: block; margin-top: 0.5em; margin-bottom: 0.5em; margin-left: auto; margin-right: auto; border-style: inset; border-width: 1px;">
 
     <div id="display-form" class="col-md-4 offset-md-4 border border-info">
-       
-        <form action="">
+
+        <form>
             <h3 class="text-center"><small>Input Parameters</small></h3>
             <div class="form-group">
                 <label class="sr-only" for="ip-group">IP Address</label>
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                     <div class="input-group-addon">IP Address</div>
-                    <input type="text" class="form-control" id="ip-group" placeholder="127.0.0.1">
+                    <input type="text" class="form-control" id="ip-group" placeholder="127.0.0.1" required>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label class="sr-only" for="min-port-group">Port Min.</label>
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                     <div class="input-group-addon">Port Min. &nbsp;</div>
-                    <input type="text" class="form-control" id="min-port-group" placeholder="1">
+                    <input type="text" class="form-control" id="min-port-group" placeholder="1" required>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label class="sr-only" for="max-port-group">Port Max.</label>
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                     <div class="input-group-addon">Port Max. &nbsp;</div>
-                    <input type="text" class="form-control" id="max-port-group" placeholder="65535">
+                    <input type="text" class="form-control" id="max-port-group" placeholder="65535" required>
                 </div>
             </div>
-            
-            <div class="form-group text-right">
-                <button type="submit" class="btn btn-primary">Scan It Now !</button>
+
+            <div class="alert alert-danger text-center" role="alert" id="errors-display">
             </div>
-            
+
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-primary" id="submit-form">Scan It Now !</button>
+            </div>
+
         </form>
     </div>
 
     <!-- Script JS-->
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
 </body>
 
 </html>
