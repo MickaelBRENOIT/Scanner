@@ -1,37 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-    
-        <!-- allow to use accents -->
-        <meta charset="utf-8">
-        
-        <!-- Basic SEO Optimization -->
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        
-        <!-- allow compatibility with IE -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        
-        <!-- allow compatibility with small devices like tablets and phones -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <!-- title of the website -->
-        <title>Example of title</title>
-        
-        <!-- icon of the website -->
-        <link rel="shortcut icon" href="">
-        
-        <!-- Fonts : need to be load before any others css files (Default Font "Roboto") -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
-        
-        <!-- CSS -->
-        <link rel="stylesheet" href="">
-        
-    </head>
+<head>
 
-    <body>
+    <!-- allow to use accents -->
+    <meta charset="utf-8">
+
+    <!-- Basic SEO Optimization -->
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- allow compatibility with IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- allow compatibility with small devices like tablets and phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title of the website -->
+    <title>Port Scanner</title>
+
+    <!-- icon of the website -->
+    <link rel="shortcut icon" href="">
+
+    <!-- Fonts : need to be load before any others css files (Default Font "Roboto") -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+
+    <!-- Bootstratp CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div id="display-title" class="text-center">
+        <h1>Port Scanner</h1>
+        <p class="lead">Network Security Project : Master 2 MIAGE</p>
+    </div>
     
-    </body>
+    <hr style="display: block; margin-top: 0.5em; margin-bottom: 0.5em; margin-left: auto; margin-right: auto; border-style: inset; border-width: 1px;">
+
+    <div id="display-form" class="col-md-4 offset-md-4 border border-info">
+       
+        <form action="">
+            <h3 class="text-center"><small>Input Parameters</small></h3>
+            <div class="form-group">
+                <label class="sr-only" for="ip-group">IP Address</label>
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon">IP Address</div>
+                    <input type="text" class="form-control" id="ip-group" placeholder="127.0.0.1">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="sr-only" for="min-port-group">Port Min.</label>
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon">Port Min. &nbsp;</div>
+                    <input type="text" class="form-control" id="min-port-group" placeholder="1">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="sr-only" for="max-port-group">Port Max.</label>
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon">Port Max. &nbsp;</div>
+                    <input type="text" class="form-control" id="max-port-group" placeholder="65535">
+                </div>
+            </div>
+            
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-primary">Scan It Now !</button>
+            </div>
+            
+        </form>
+    </div>
+
+    <!-- Script JS-->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+</body>
 
 </html>
