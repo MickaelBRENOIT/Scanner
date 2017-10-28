@@ -85,6 +85,54 @@ $(document).ready(function () {
             var state = enableSubmitButtonifAllInputAreCorrect();
             if (state) {
                 $("#errors-display").hide();
+                
+                /* start displaying the progress bar and result table */
+                var count = 0;
+                $("#display-progress").text("Number of elements treated : " + count + " on " + (maxi - mini));
+                $("#results").append("<table class='table table-striped'>" + 
+                                     "<thead class='thead-dark'>" + 
+                                     "<tr>" + 
+                                     "<th scope='col'>#</th>" + 
+                                     "<th scope='col'>Port Number</th>" + 
+                                     "<th scope='col'>Port Code</th>" +
+                                     "<th scope='col'>Port Message</th>" +
+                                     "</tr>" +
+                                     "</thread>" + 
+                                     "<tbody id='display-item-each-row'>" + 
+                                     "</tbody>" + 
+                                     "</table>" );
+                
+
+                /* processing tests on every port between mini and maxi */
+                var ip = $('#ip-group').val();
+                for (var i = mini; i < maxi; i++) {
+                    var datas = 'ip=' + ip + "&port=" + i;
+                    $.ajax({
+                        type: "POST",
+                        url: "check_status_port.php",
+                        data: datas,
+                        cache: false,
+                        success: function (result) {
+                            count = count + 1;
+                            result = result.split("&");
+                            var code = result[0];
+                            var mess = result[1];
+                            var port = result[2];
+                            
+                            // update number of items treated
+                            $("#display-progress").text("Number of elements treated : " + count + " on " + (maxi - mini));
+                            
+                            // update the result table
+                            $("#display-item-each-row").append("<tr>" + 
+                                                               "<th  scope='row'>" + count + "</th>" +
+                                                               "<td>" + port + "</td>" + 
+                                                               "<td>" + code + "</td>" + 
+                                                               "<td>" + mess + "</td>" + 
+                                                               "</tr>");
+                        }
+                    })
+                }
+
             } else {
                 $("#errors-display").text("User inputs are incorrect, fields must be filled correctly and not empty.");
                 $("#errors-display").show();
