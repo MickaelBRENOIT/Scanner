@@ -9,11 +9,12 @@
         
         socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array('sec' => 1, 'usec' => 0));
         
-        $connection = socket_connect($socket, $ip, $port);
+        socket_connect($socket, $ip, $port);
         $socket_code = socket_last_error($socket);
         $socket_mess = utf8_encode(socket_strerror($socket_code));
         //$socket_mess = mb_convert_encoding(socket_strerror($socket_code), "HTML-ENTITIES", 'UTF-8');
         $socket_port = $port;
+        socket_close($socket);
         
         echo "$socket_code&$socket_mess&$socket_port";
         exit();
