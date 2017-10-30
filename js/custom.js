@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+    /************************************************************************
+     *                                                                      *
+     *    SECTION : Scanner Form                                            *
+     *                                                                      *
+     ************************************************************************/
+
     $("#errors-display").hide();
     $("#progress-bar-visibility").hide();
     var inputAddressValid = false;
@@ -80,7 +86,6 @@ $(document).ready(function () {
         if (mini >= maxi) {
             $("#errors-display").text("The (Port Max.) must be greater than (Port Min.)");
             $("#errors-display").show();
-            event.preventDefault();
         } else {
             /* check if our 3 inputs are disabled */
             var state = enableSubmitButtonifAllInputAreCorrect();
@@ -145,8 +150,121 @@ $(document).ready(function () {
             } else {
                 $("#errors-display").text("User inputs are incorrect, fields must be filled correctly and not empty.");
                 $("#errors-display").show();
-                event.preventDefault();
             }
         }
     });
+
+    /************************************************************************
+     *                                                                      *
+     *    SECTION : SignUp Form                                             *
+     *                                                                      *
+     ************************************************************************/
+
+
+    $("#signup-errors-display").hide();
+    var inputUsernameSignUpValid = false;
+    var inputPasswordSignUpValid = false;
+    var inputConfirmPasswordSignUpValid = false;
+    $('#create-confirm-password-group').prop('readonly', true);
+
+    /* Check if username is only composed with lowercase/uppercase and digits */
+    $("#create-username-group").keyup(function () {
+        var contents = $('#create-username-group').val();
+        if (/^[a-zA-Z0-9]{3,}$/.test(contents)) {
+            if ($("#create-username-group").hasClass("is-invalid") || !$("#create-username-group").hasClass("is-valid")) {
+                $("#create-username-group").removeClass("is-invalid"); // remove class if it possible otherwise it ignore this instruction
+                $("#create-username-group").addClass("is-valid");
+            }
+            inputUsernameSignUpValid = true;
+        } else {
+            if ($("#create-username-group").hasClass("is-valid") || !$("#create-username-group").hasClass("is-invalid")) {
+                $("#create-username-group").removeClass("is-valid");
+                $("#create-username-group").addClass("is-invalid");
+            }
+            inputUsernameSignUpValid = false;
+        }
+    });
+
+    /* Check if password is 8 characters min. with at least 1 lowercase, 1 uppercase, 1 digit and 1 special char */
+    $("#create-password-group").keyup(function () {
+        var contents = $('#create-password-group').val();
+        if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/.test(contents)) {
+            if ($("#create-password-group").hasClass("is-invalid") || !$("#create-password-group").hasClass("is-valid")) {
+                $("#create-password-group").removeClass("is-invalid"); // remove class if it possible otherwise it ignore this instruction
+                $("#create-password-group").addClass("is-valid");
+                $('#create-confirm-password-group').prop('readonly', false);
+            }
+            inputPasswordSignUpValid = true;
+        } else {
+            if ($("#create-password-group").hasClass("is-valid") || !$("#create-password-group").hasClass("is-invalid")) {
+                $("#create-password-group").removeClass("is-valid");
+                $("#create-password-group").addClass("is-invalid");
+                $('#create-confirm-password-group').prop('readonly', true);
+            }
+            inputPasswordSignUpValid = false;
+        }
+    });
+
+    /* Check if "password" and "confirm password" are the same */
+    $("#create-confirm-password-group").keyup(function () {
+        var password = $('#create-password-group').val();
+        var confirm_password = $('#create-confirm-password-group').val();
+
+        if (password === confirm_password) {
+            if ($("#create-confirm-password-group").hasClass("is-invalid") || !$("#create-confirm-password-group").hasClass("is-valid")) {
+                $("#create-confirm-password-group").removeClass("is-invalid"); // remove class if it possible otherwise it ignore this instruction
+                $("#create-confirm-password-group").addClass("is-valid");
+            }
+            inputConfirmPasswordSignUpValid = true;
+        } else {
+            if ($("#create-confirm-password-group").hasClass("is-valid") || !$("#create-confirm-password-group").hasClass("is-invalid")) {
+                $("#create-confirm-password-group").removeClass("is-valid");
+                $("#create-confirm-password-group").addClass("is-invalid");
+            }
+            inputConfirmPasswordSignUpValid = false;
+        }
+    });
+
+
+    function enableSubmitButtonifAllInputAreCorrectInSignUpForm() {
+        if (inputUsernameSignUpValid && inputPasswordSignUpValid && inputConfirmPasswordSignUpValid) {
+            return true;
+        }
+        return false;
+    }
+
+    $("#createAnAccount").click(function () {
+
+        /* check if our 3 inputs are disabled */
+        var state = enableSubmitButtonifAllInputAreCorrectInSignUpForm();
+        if (state) {
+            
+            var username = $('#create-username-group').val();
+            var password = $('#create-password-group').val();
+            var confirm_password = $('#create-confirm-password-group').val();
+            
+            var datas = 'username=' + username + "&password=" + password + "&confirm=" + confirm_password;
+            $.ajax({
+                type: "POST",
+                url: "create_an_account.php",
+                data: datas,
+                cache: false,
+                success: function (result) {
+                    console.log("RESULT : " + result);
+                    if($.trim(result).length > 0){
+                        $("#signup-errors-display").text("\"" + result + "\" already exists. Try an another username please.");
+                        $("#signup-errors-display").show();
+                    } else {
+                        location.reload();
+                    }
+                }
+            })
+        } else {
+            $("#signup-errors-display").text("User inputs are incorrect, fields must be filled correctly and not empty.");
+            $("#signup-errors-display").show();
+        }
+    });
+
+
+
 });
