@@ -87,26 +87,26 @@ $(document).ready(function () {
             if (state) {
                 var count = 0;
                 var total_ports = (maxi - mini + 1);
-                
+
                 $("#errors-display").hide();
                 $("#progress-bar-visibility").show();
                 $('#progress-bar-to-update').attr('aria-valuemax', total_ports);
-                
+
                 /* start displaying the progress bar and result table */
                 $("#display-progress").text("Number of elements treated : " + count + " on " + total_ports);
-                $("#results").append("<table class='table table-striped'>" + 
-                                     "<thead class='thead-dark'>" + 
-                                     "<tr>" + 
-                                     "<th scope='col'>#</th>" + 
-                                     "<th scope='col'>Port Number</th>" + 
-                                     "<th scope='col'>Port Code</th>" +
-                                     "<th scope='col'>Port Message</th>" +
-                                     "</tr>" +
-                                     "</thread>" + 
-                                     "<tbody id='display-item-each-row'>" + 
-                                     "</tbody>" + 
-                                     "</table>" );
-                
+                $("#results").append("<table class='table table-striped'>" +
+                    "<thead class='thead-dark'>" +
+                    "<tr>" +
+                    "<th scope='col'>#</th>" +
+                    "<th scope='col'>Port Number</th>" +
+                    "<th scope='col'>Port Code</th>" +
+                    "<th scope='col'>Port Message</th>" +
+                    "</tr>" +
+                    "</thread>" +
+                    "<tbody id='display-item-each-row'>" +
+                    "</tbody>" +
+                    "</table>");
+
 
                 /* processing tests on every port between mini and maxi */
                 var ip = $('#ip-group').val();
@@ -123,21 +123,21 @@ $(document).ready(function () {
                             var code = result[0];
                             var mess = result[1];
                             var port = result[2];
-                            
+
                             // update number of items treated
                             $("#display-progress").text("Number of elements treated : " + count + " on " + total_ports);
-                            
+
                             // update the progress bar
-                            var percent = ((count/total_ports) * 100);
-                            $('#progress-bar-to-update').attr('aria-valuenow', count).css('width', percent+'%');
-                            
+                            var percent = ((count / total_ports) * 100);
+                            $('#progress-bar-to-update').attr('aria-valuenow', count).css('width', percent + '%');
+
                             // update the result table
-                            $("#display-item-each-row").append("<tr>" + 
-                                                               "<th  scope='row'>" + count + "</th>" +
-                                                               "<td>" + port + "</td>" + 
-                                                               "<td>" + code + "</td>" + 
-                                                               "<td>" + mess + "</td>" +
-                                                               "</tr>");
+                            $("#display-item-each-row").append("<tr>" +
+                                "<th  scope='row'>" + count + "</th>" +
+                                "<td>" + port + "</td>" +
+                                "<td>" + code + "</td>" +
+                                "<td>" + mess + "</td>" +
+                                "</tr>");
                         }
                     })
                 }
