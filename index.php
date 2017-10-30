@@ -1,53 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <!-- allow to use accents -->
-    <meta charset="utf-8">
-
-    <!-- Basic SEO Optimization -->
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-
-    <!-- allow compatibility with IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- allow compatibility with small devices like tablets and phones -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- title of the website -->
-    <title>Port Scanner</title>
-
-    <!-- icon of the website -->
-    <link rel="shortcut icon" href="">
-
-    <!-- Fonts : need to be load before any others css files (Default Font "Roboto") -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
-
-    <!-- Bootstratp CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css.map">
-
-</head>
-
-<body>
-
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">ScanYourPC</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <button class="btn btn-outline-primary my-2 my-sm-0 mr-2" type="button" data-toggle="modal" data-target="#SignUpModal">Sign Up</button>
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#SignInModal">Sign In</button>
-                </ul>
-            </div>
-        </nav>
-    </header>
+<?php
+    include_once("header.php");
+?>
 
     <!-- Modal For Sign UP -->
     <div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
@@ -64,14 +17,14 @@
                         <label class="sr-only" for="create-username-group">Username</label>
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon">Username &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                            <input type="text" class="form-control" id="create-username-group" placeholder="Username" required>
+                            <input type="text" class="form-control" id="create-username-group" placeholder="Min 3 characters (special characters not allowed)" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="create-password-group">Password</label>
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon">Password &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                            <input type="password" class="form-control" id="create-password-group" placeholder="Min 8 characters and need 1 digit, 1 uppercase, 1 lowercase" required>
+                            <input type="password" class="form-control" id="create-password-group" placeholder="Min 8 characters and need 1 digit, 1 uppercase, 1 lowercase, 1 special char" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -80,6 +33,8 @@
                             <div class="input-group-addon">Confirm Password</div>
                             <input type="password" class="form-control" id="create-confirm-password-group" placeholder="Type your password again" required>
                         </div>
+                    </div>
+                    <div class="alert alert-danger text-center" role="alert" id="signup-errors-display">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -133,7 +88,7 @@
 
     <div id="display-form" class="col-md-4 offset-md-4 border border-info">
 
-       <!-- IP Address -->
+        <!-- IP Address -->
         <h3 class="text-center"><small>Input Parameters</small></h3>
         <div class="form-group">
             <label class="sr-only" for="ip-group">IP Address</label>
@@ -143,7 +98,7 @@
             </div>
         </div>
 
-       <!-- Port Min -->
+        <!-- Port Min -->
         <div class="form-group">
             <label class="sr-only" for="min-port-group">Port Min.</label>
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -171,7 +126,7 @@
     </div>
 
     <br/><br/>
-    
+
     <!-- Display how many elements have been treated -->
     <div id="progress" class="col-md-12 text-center">
         <p class="lead" id="display-progress"></p>
@@ -184,12 +139,7 @@
 
     <div id="results" class="col-md-8 offset-md-2">
     </div>
-
-    <!-- Script JS-->
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/popper.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/custom.js"></script>
-</body>
-
-</html>
+    
+<?php
+    include_once("footer.php");
+?>
