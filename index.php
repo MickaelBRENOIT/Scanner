@@ -21,6 +21,16 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="sr-only" for="create-email-group">Email</label>
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <div class="input-group-addon">Email &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                            <input type="text" class="form-control" id="create-email-group" placeholder="example@gmail.com" required>
+                        </div>
+                    </div>
+                    <div class="alert alert-warning text-center" role="alert">
+                        Once your account created, you need to validate it !
+                    </div>
+                    <div class="form-group">
                         <label class="sr-only" for="create-password-group">Password</label>
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon">Password &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
@@ -139,7 +149,7 @@
 
     <div id="results" class="col-md-8 offset-md-2">
     </div>
-    
-<?php
+
+    <?php
     include_once("footer.php");
 ?>

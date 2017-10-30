@@ -165,6 +165,7 @@ $(document).ready(function () {
     var inputUsernameSignUpValid = false;
     var inputPasswordSignUpValid = false;
     var inputConfirmPasswordSignUpValid = false;
+    var inputEmailSignUpValid = false;
     $('#create-confirm-password-group').prop('readonly', true);
 
     /* Check if username is only composed with lowercase/uppercase and digits */
@@ -182,6 +183,24 @@ $(document).ready(function () {
                 $("#create-username-group").addClass("is-invalid");
             }
             inputUsernameSignUpValid = false;
+        }
+    });
+    
+    /* Check if email is really an email address */
+    $("#create-email-group").keyup(function () {
+        var contents = $('#create-email-group').val();
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(contents)) {
+            if ($("#create-email-group").hasClass("is-invalid") || !$("#create-email-group").hasClass("is-valid")) {
+                $("#create-email-group").removeClass("is-invalid"); // remove class if it possible otherwise it ignore this instruction
+                $("#create-email-group").addClass("is-valid");
+            }
+            inputEmailSignUpValid = true;
+        } else {
+            if ($("#create-email-group").hasClass("is-valid") || !$("#create-email-group").hasClass("is-invalid")) {
+                $("#create-email-group").removeClass("is-valid");
+                $("#create-email-group").addClass("is-invalid");
+            }
+            inputEmailSignUpValid = false;
         }
     });
 
@@ -227,7 +246,7 @@ $(document).ready(function () {
 
 
     function enableSubmitButtonifAllInputAreCorrectInSignUpForm() {
-        if (inputUsernameSignUpValid && inputPasswordSignUpValid && inputConfirmPasswordSignUpValid) {
+        if (inputUsernameSignUpValid && inputPasswordSignUpValid && inputConfirmPasswordSignUpValid && inputEmailSignUpValid) {
             return true;
         }
         return false;
@@ -240,10 +259,11 @@ $(document).ready(function () {
         if (state) {
             
             var username = $('#create-username-group').val();
+            var email = $('#create-email-group').val();
             var password = $('#create-password-group').val();
             var confirm_password = $('#create-confirm-password-group').val();
             
-            var datas = 'username=' + username + "&password=" + password + "&confirm=" + confirm_password;
+            var datas = 'username=' + username + "&email=" + email + "&password=" + password + "&confirm=" + confirm_password;
             $.ajax({
                 type: "POST",
                 url: "create_an_account.php",
