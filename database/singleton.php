@@ -33,6 +33,10 @@ class Database{
 		return $this->_pdo->prepare($query);
 	}
     
+    public function myLastInsertId(){
+        return $this->_pdo->lastInsertId();
+    }
+    
     //to TRULY ensure there is only 1 instance, you'll have to disable object cloning
     public function __clone()
     {
