@@ -13,10 +13,11 @@
         $req->execute();
         
         if($req->rowCount() == 1){
-            echo "<script type='text/javascript'>window.location.href = 'index.php';</script>";
+            echo "<script type='text/javascript'>window.location.href = 'index.php?action=activated';</script>";
             exit();
         } else {
-            echo "This account could not be activited";
+            echo "<script type='text/javascript'>window.location.href = 'index.php?action=notactivated';</script>";
+            exit();
         }
     }
 ?>
