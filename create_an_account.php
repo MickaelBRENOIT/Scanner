@@ -21,8 +21,7 @@
             exit();
         } else {
             $emailClean = filter_var($email, FILTER_SANITIZE_EMAIL);
-            $passwordClean = filter_var($username, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-            $hash = password_hash($passwordClean, PASSWORD_BCRYPT);
+            $hash = password_hash($password, PASSWORD_BCRYPT);
             $rand_active = md5(uniqid(rand(),true));
             
             $req_create = $con->prepareDB("INSERT INTO users (username, email, password, active) VALUES (? , ? , ? , ?)");
