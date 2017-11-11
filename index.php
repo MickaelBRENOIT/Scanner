@@ -80,6 +80,8 @@
                             <input type="password" class="form-control" id="login-password-group" placeholder="Password" required>
                         </div>
                     </div>
+                    <div class="alert alert-danger text-center" role="alert" id="signin-errors-display">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -149,6 +151,36 @@
 
     <div id="results" class="col-md-8 offset-md-2">
     </div>
+
+    <!-- Display a modal to display if an account was activated successfully or not -->
+    <?php if(isset($_GET["action"])) { ?>
+    <div class="modal" tabindex="-1" role="dialog" id="accountActivatedOrNot">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Account activation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                   <?php if($_GET["action"] == 'activated') { ?>
+                   <div class="alert alert-success text-center" role="alert">
+                        Your account is now activated !
+                    </div>
+                    <?php } elseif($_GET["action"] == 'notactivated') { ?>
+                    <div class="alert alert-danger text-center" role="alert">
+                        Your account couldn't be activated. Maybe you already have activated it or something unexpected happened.
+                    </div>
+                    <?php } ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
 
     <?php
     include_once("footer.php");

@@ -2,6 +2,18 @@ $(document).ready(function () {
 
     /************************************************************************
      *                                                                      *
+     *    SECTION : Check if account was successfully created               *
+     *                                                                      *
+     ************************************************************************/
+
+    try {
+        $('#accountActivatedOrNot').modal('show');
+    } catch(err) {
+        console.log("Account couldn't be activated : " + err.message);
+    }
+
+    /************************************************************************
+     *                                                                      *
      *    SECTION : Scanner Form                                            *
      *                                                                      *
      ************************************************************************/
@@ -185,7 +197,7 @@ $(document).ready(function () {
             inputUsernameSignUpValid = false;
         }
     });
-    
+
     /* Check if email is really an email address */
     $("#create-email-group").keyup(function () {
         var contents = $('#create-email-group').val();
@@ -257,12 +269,12 @@ $(document).ready(function () {
         /* check if our 3 inputs are disabled */
         var state = enableSubmitButtonifAllInputAreCorrectInSignUpForm();
         if (state) {
-            
+
             var username = $('#create-username-group').val();
             var email = $('#create-email-group').val();
             var password = $('#create-password-group').val();
             var confirm_password = $('#create-confirm-password-group').val();
-            
+
             var datas = 'username=' + username + "&email=" + email + "&password=" + password + "&confirm=" + confirm_password;
             $.ajax({
                 type: "POST",
@@ -271,7 +283,7 @@ $(document).ready(function () {
                 cache: false,
                 success: function (result) {
                     console.log("RESULT : " + result);
-                    if($.trim(result).length > 0){
+                    if ($.trim(result).length > 0) {
                         $("#signup-errors-display").text("\"" + result + "\" already exists. Try an another username please.");
                         $("#signup-errors-display").show();
                     } else {
@@ -286,5 +298,53 @@ $(document).ready(function () {
     });
 
 
+    /************************************************************************
+     *                                                                      *
+     *    SECTION : SignIn Form                                             *
+     *                                                                      *
+     ************************************************************************/
+    
+    $("#signin-errors-display").hide();
+    
+    $("#loginToAnAccount").click(function() {
+        var login = $('#login-username-group').val();
+        var passw = $('#login-password-group').val();
+        
+        if(login == '' || passw == ''){
+            $("#signin-errors-display").text("User inputs are incorrect, fields must be not empty.");
+            $("#signin-errors-display").show();
+        } else {
+            var datas = 'login=' + login + '&passw=' + passw;
+            $.ajax({
+                type: "POST",
+                url: "login.php",
+                data: datas,
+                cache: false,
+                success: function (result){
+                    if ($.trim(result).length <= 0) {
+                        $("#signin-errors-display").text("This account does not exist. If it's your first connection, make sure to check if you have activated your account.");
+                        $("#signin-errors-display").show();
+                    } else {
+                        window.location.href = 'index.php';
+                    }
+                }
+            })
+        }
+    });
+    
+    /************************************************************************
+     *                                                                      *
+     *    SECTION : Logout                                                  *
+     *                                                                      *
+     ************************************************************************/
+    
+    $("#processLogout").click(function() {
+        $.ajax({
+            url: "logout.php",
+            success: function(data){
+                window.location.href = 'index.php';
+            }
+        })
+    });
 
 });

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,8 +43,13 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
+                   <?php if(!isset($_SESSION) || !isset($_SESSION['loggedin'])) { ?>
                     <button class="btn btn-outline-primary my-2 my-sm-0 mr-2" type="button" data-toggle="modal" data-target="#SignUpModal">Sign Up</button>
                     <button class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#SignInModal">Sign In</button>
+                    <?php } else { ?>
+                    <p style="color: white;" class="pt-2 my-sm-0 mr-3">Hello, <?php if(isset($_SESSION['username'])) { echo $_SESSION["username"]; } ?></p>
+                    <button class="btn btn-outline-danger my-2 my-sm-0" type="button" id="processLogout">Sign Out</button>
+                    <?php } ?>
                 </ul>
             </div>
         </nav>
