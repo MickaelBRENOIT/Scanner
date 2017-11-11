@@ -106,7 +106,11 @@
             <label class="sr-only" for="ip-group">IP Address</label>
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                 <div class="input-group-addon">IP Address</div>
-                <input type="text" class="form-control" id="ip-group" placeholder="127.0.0.1" required>
+                <?php if(!isset($_SESSION) || !isset($_SESSION['loggedin'])) { ?>
+                    <input type="text" class="form-control" id="ip-group" placeholder="127.0.0.1" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>" readonly>
+                <?php } else { ?>
+                    <input type="text" class="form-control" id="ip-group" placeholder="127.0.0.1" required>
+                <?php } ?>
             </div>
         </div>
 

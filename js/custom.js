@@ -100,6 +100,9 @@ $(document).ready(function () {
             $("#errors-display").show();
         } else {
             /* check if our 3 inputs are disabled */
+            if($('#ip-group').is('[readonly]')){
+                inputAddressValid = true;
+            }
             var state = enableSubmitButtonifAllInputAreCorrect();
             if (state) {
                 var count = 0;
