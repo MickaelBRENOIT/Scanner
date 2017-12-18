@@ -1,6 +1,6 @@
 <?php
     include_once("database/singleton.php");
-    //error_reporting(0);
+    error_reporting(0);
     //collect values from the url
     $id = trim($_GET['x']);
     $active = trim($_GET['y']);

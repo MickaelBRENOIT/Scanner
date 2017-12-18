@@ -1,7 +1,7 @@
 <?php 
 
     include_once("database/singleton.php");
-    error_reporting(E_ALL);
+    error_reporting(0);
 
     $login = $_POST["login"];
     $passw = $_POST["passw"];

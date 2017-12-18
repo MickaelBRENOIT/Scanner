@@ -1,6 +1,6 @@
 <?php
     include_once("database/singleton.php");
-    //error_reporting(0);
+    error_reporting(0);
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -34,9 +34,10 @@
             $id = $con->myLastInsertId();
             $to = $emailClean;
             $subject = "Registration Confirmation";
-            $body = "<h2>Thank you for registering at demo site.</h2>
-                     <p>To activate your account, please click on this link: <a href='127.0.0.1/Scanner/activate.php?x=$id&y=$rand_active'>127.0.0.1/Scanner/activate.php?x=$id&y=$rand_active</a></p>
-                     <p>Regards Site Admin</p>";
+            $DOMAIN = $_SERVER['SERVER_NAME'];
+            $body = '<h2>Thank you for registering at demo site.</h2>
+                     <p>To activate your account, please click on this link: <a href="'.$DOMAIN.'/Scanner/activate.php?x='.$id.'&y='.$rand_active.'">Click here to activate your account</a></p>
+                     <p>Regards Site Admin</p>';
             // Always set content-type when sending HTML email
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
