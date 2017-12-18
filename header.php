@@ -4,6 +4,8 @@
 
 <head>
 
+  <!-- allow to use accents llll-->
+
     <!-- allow to use accents -->
     <meta charset="utf-8">
 
