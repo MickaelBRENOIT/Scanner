@@ -350,4 +350,26 @@ $(document).ready(function () {
         })
     });
 
+
+    /************************************************************************
+     *                                                                      *
+     *    SECTION :  ADMIN CONTAINER                                        *
+     *                                                                      *
+     ************************************************************************/
+  $(window).on('hashchange', route);
+
+    function route() {
+       var hash = window.location.hash;
+        if (hash === "#Users") {
+            UsersFunction.render();
+        } if (hash === "#Ports") {
+            PortsFunction.render();
+        }  if (hash === "#Virus") {
+            VirusFunction.render();
+        }
+         }
+
+
+ 
+
 });
