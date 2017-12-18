@@ -5,7 +5,7 @@
 
     $login = $_POST["login"];
     $passw = $_POST["passw"];
-
+   
     if(isset($login) && isset($passw) && !empty($login) && !empty($passw)){
         $con = Database::getConnection();
         $usernameClean = filter_var($login, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
@@ -20,6 +20,7 @@
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $row['username'];
             $_SESSION['memberID'] = $row['id'];
+            $_SESSION['userRole'] = $row['role'];
             echo "state:ok";
             exit();
         }
