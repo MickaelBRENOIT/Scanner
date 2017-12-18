@@ -91,6 +91,9 @@ $(document).ready(function () {
 
     /* called when the submit button is pressed */
     $("#submit-form").click(function () {
+		alert("taras");
+		$("#results").empty();
+		
         var mini = $('#min-port-group').val();
         var maxi = $('#max-port-group').val();
 
