@@ -91,8 +91,8 @@ $(document).ready(function () {
 
     /* called when the submit button is pressed */
     $("#submit-form").click(function () {
-		$("#results").empty();
 		
+		var bouton = this;
         var mini = $('#min-port-group').val();
         var maxi = $('#max-port-group').val();
 
@@ -107,6 +107,8 @@ $(document).ready(function () {
             }
             var state = enableSubmitButtonifAllInputAreCorrect();
             if (state) {
+				$("#results").empty();
+				bouton.disabled=true;
                 var count = 0;
                 var total_ports = (maxi - mini + 1);
 
@@ -140,6 +142,7 @@ $(document).ready(function () {
                         data: datas,
                         cache: false,
                         success: function (result) {
+							bouton.disabled=false;
                             count = count + 1;
                             result = result.split("&");
                             var code = result[0];
@@ -160,10 +163,12 @@ $(document).ready(function () {
                                 "<td>" + code + "</td>" +
                                 "<td>" + mess + "</td>" +
                                 "</tr>");
-                        }
+                        },
+						error: function (){
+							bouton.disabled=false;
+						}
                     })
                 }
-
             } else {
                 $("#errors-display").text("User inputs are incorrect, fields must be filled correctly and not empty.");
                 $("#errors-display").show();
