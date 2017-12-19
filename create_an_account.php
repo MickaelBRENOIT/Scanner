@@ -1,6 +1,6 @@
 <?php
     include_once("database/singleton.php");
-    error_reporting(0);
+    error_reporting(E_ALL);
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -23,12 +23,14 @@
             $emailClean = filter_var($email, FILTER_SANITIZE_EMAIL);
             $hash = password_hash($password, PASSWORD_BCRYPT);
             $rand_active = md5(uniqid(rand(),true));
+			$role = 2;
             
-            $req_create = $con->prepareDB("INSERT INTO users (username, email, password, active) VALUES (? , ? , ? , ?)");
+            $req_create = $con->prepareDB("INSERT INTO users (username, email, password, active, id_role) VALUES (? , ? , ? , ?, ?)");
             $req_create->bindParam(1, $usernameClean);
             $req_create->bindParam(2, $emailClean);
             $req_create->bindParam(3, $hash);
             $req_create->bindParam(4, $rand_active);
+			$req_create->bindParam(5, $role);
             $req_create->execute();
             
             $id = $con->myLastInsertId();
