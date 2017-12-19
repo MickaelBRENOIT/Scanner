@@ -166,6 +166,28 @@
             </div>
         </div>
     </div>
+	
+	<!-- Modal for diagram -->
+	<div class="modal fade" id="DiagramModal" tabindex="-1" role="dialog" aria-labelledby="DiagramModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">View Diagram</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			<canvas id="doughnut-chart" width="800" height="450"></canvas>
+			<br/>
+			<div id="open"></div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
 
 
      
@@ -227,9 +249,19 @@
         <div class="alert alert-danger text-center" role="alert" id="errors-display">
         </div>
 
-        <div class="form-group text-right">
-            <button type="submit" class="btn btn-primary" id="submit-form">Scan It Now !</button>
-        </div>
+		<div class="container-fluid">
+			<div class="row">
+			
+			<div class="form-group col-md-6 text-left" >
+				<button type="submit" class="btn btn-danger" id="view-diagram" data-toggle="modal" data-target="#DiagramModal">View Diagram</button>
+			</div>
+			
+			<div class="form-group col-md-6 text-right">
+				<button type="submit" class="btn btn-primary" id="submit-form">Scan It Now !</button>
+			</div>
+			
+			</div>
+		</div>
 
     </div>
 <?php } else {?>

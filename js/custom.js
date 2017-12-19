@@ -20,9 +20,14 @@ $(document).ready(function () {
 
     $("#errors-display").hide();
     $("#progress-bar-visibility").hide();
+	$('#view-diagram').hide();
     var inputAddressValid = false;
     var inputPortMinValid = false;
     var inputPortMaxValid = false;
+	var array = [];
+	var arrayOpenedPorts = [];
+	var total_ports = 0;
+	var count_ajax_calls = 0;
 
     /* check if the regex match with the ip user input */
     $("#ip-group").keyup(function () {
@@ -92,9 +97,14 @@ $(document).ready(function () {
     /* called when the submit button is pressed */
     $("#submit-form").click(function () {
 		
+		//Reinitialisation of the array of opened ports
+		arrayOpenedPorts = [];
+		array = [];
+		
 		var bouton = this;
-        var mini = $('#min-port-group').val();
-        var maxi = $('#max-port-group').val();
+        var mini = parseInt($('#min-port-group').val());
+        var maxi = parseInt($('#max-port-group').val());
+		
 
         /* check if port min < max ohterwise an error is displayed and the click event is disabled */
         if (mini >= maxi) {
@@ -110,8 +120,9 @@ $(document).ready(function () {
 				$("#results").empty();
 				bouton.disabled=true;
                 var count = 0;
-                var total_ports = (maxi - mini + 1);
+                total_ports = (maxi - mini + 1);
 
+				$('#view-diagram').hide();
                 $("#errors-display").hide();
                 $("#progress-bar-visibility").show();
                 $('#progress-bar-to-update').attr('aria-valuemax', total_ports);
@@ -142,12 +153,31 @@ $(document).ready(function () {
                         data: datas,
                         cache: false,
                         success: function (result) {
-							bouton.disabled=false;
                             count = count + 1;
                             result = result.split("&");
                             var code = result[0];
                             var mess = result[1];
                             var port = result[2];
+							
+							if(code == 0) {
+								arrayOpenedPorts.push(port);
+							}
+							
+							if(array.hasOwnProperty(mess)){
+                                var value = array[mess];
+                                value+=1;
+                                array[mess] = value;
+                                //console.log(array[code] + " => " + value);
+                            } else {
+                                array[mess] = 1;
+                                //console.log("Array -> " + Object.keys(array));
+                            }
+
+                            //console.log("=> " + Object.entries(array));
+                            /*Object.entries(array).forEach(([key, value]) => {
+                                console.log(`${key} ${value}`); 
+                            });*/
+                            
 
                             // update number of items treated
                             $("#display-progress").text("Number of elements treated : " + count + " on " + total_ports);
@@ -164,8 +194,13 @@ $(document).ready(function () {
                                 "<td>" + mess + "</td>" +
                                 "</tr>");
                         },
-						error: function (){
-							bouton.disabled=false;
+						complete : function () {
+							count_ajax_calls += 1;
+							if(count_ajax_calls === total_ports){
+								bouton.disabled=false;
+								count_ajax_calls = 0;
+								$('#view-diagram').show();
+							}
 						}
                     })
                 }
@@ -356,7 +391,49 @@ $(document).ready(function () {
             }
         })
     });
+	
+	/************************************************************************
+     *                                                                      *
+     *    SECTION : Diagram modal                                           *
+     *                                                                      *
+     ************************************************************************/
 
+	 $("#view-diagram").click(function() {
+		 
+		 //Diagram creation
+		 new Chart(document.getElementById("doughnut-chart"), {
+			type: 'doughnut',
+			data: {
+			  labels: ["Closed", "Opened", "Filtered"],
+			  datasets: [
+				{
+				  label: "Scan port",
+				  backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
+				  data: Object.values(array)
+				}
+			  ]
+			},
+			options: {
+			  title: {
+				display: true,
+				text: 'Predicted world population (millions) in 2050'
+			  }
+			}
+		});
+		
+		document.getElementById("open").textContent='';
+		
+		//Opened ports names
+		for(let i = 0; i<arrayOpenedPorts.length; i+=1){
+			let p = document.createElement('p');
+			p.textContent = `The port ${arrayOpenedPorts[i]} is opened.`;
+			document.getElementById("open").appendChild(p);
+		}
+		
+		
+		
+		
+	 });
 
     /************************************************************************
      *                                                                      *
@@ -375,8 +452,5 @@ $(document).ready(function () {
             VirusFunction.render();
         }
          }
-
-
- 
 
 });
