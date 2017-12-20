@@ -27,9 +27,9 @@
         echo "<td>".$row["active"]."</td>";
         echo "<td>".$row["name"]."</td>";
         echo "<td>";
-        echo '<button class="modifyuser btn btn-warning" value="'.$row["username"].'" >Modify</button>';
+        echo '<button type="submit" class="modifyuser btn btn-warning" value="'.$row["username"].'" >Modify</button>';
         echo "&nbsp;&nbsp;";
-        echo '<button class="deleteuser btn btn-danger" value="'.$row["username"].'" >Delete</button>';
+        echo '<button type="submit" class="deleteuser btn btn-danger" value="'.$row["username"].'" >Delete</button>';
         echo "</td>";
         echo "</tr>";
     }

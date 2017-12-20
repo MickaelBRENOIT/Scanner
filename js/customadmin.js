@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+    /************************************************************************
+     *                                                                      *
+     *    SECTION : display list of users                                   *
+     *                                                                      *
+     ************************************************************************/
+
     $('#display-list').click(function () {
         if ($('#display-list').hasClass("btn btn-primary")) {
             $.ajax({
@@ -18,6 +24,12 @@ $(document).ready(function () {
             $('#display-list').html("Display all users");
         }
     });
+
+    /************************************************************************
+     *                                                                      *
+     *    SECTION : Get all roles for modal                                 *
+     *                                                                      *
+     ************************************************************************/
 
     $('#add-user').click(function () {
         $.ajax({
@@ -38,6 +50,7 @@ $(document).ready(function () {
     var inputPasswordAddValid = false;
     var inputEmailAddValid = false;
 
+    /* Username needs at least 3 characters */
     $("#add-username-group").keyup(function () {
         var contents = $('#add-username-group').val();
         if (/^[a-zA-Z0-9]{3,}$/.test(contents)) {
@@ -92,13 +105,19 @@ $(document).ready(function () {
             inputPasswordAddValid = false;
         }
     });
-    
+
     function enableSubmitButtonifAllInputAreCorrectInSignUpForm() {
         if (inputUsernameAddValid && inputPasswordAddValid && inputEmailAddValid) {
             return true;
         }
         return false;
     }
+
+    /************************************************************************
+     *                                                                      *
+     *    SECTION : Add an user Form                                        *
+     *                                                                      *
+     ************************************************************************/
 
     $('#addAnUser').click(function () {
         var state = enableSubmitButtonifAllInputAreCorrectInSignUpForm();
@@ -128,6 +147,36 @@ $(document).ready(function () {
             $("#add-errors-display").text("User inputs are incorrect, fields must be filled correctly and not empty.");
             $("#add-errors-display").show();
         }
+    });
+
+    /************************************************************************
+     *                                                                      *
+     *    SECTION : Delete an user Form                                     *
+     *                                                                      *
+     ************************************************************************/
+
+    var username = '';
+
+    $(document).on('click', '.deleteuser', function () {
+        username = $(this).val();
+
+        $('#delete-user-display').text("Do you really want to delete " + username + " ?");
+        $('#DeleteUserModal').modal('show');
+        
+    });
+
+    $('#DeleteAnUser').click(function () {
+        var datas = 'username=' + username;
+        
+        $.ajax({
+            type: "POST",
+            url: "delete_an_user.php",
+            data: datas,
+            cache: false,
+            success: function (result) {
+                location.reload();
+            }
+        })
     });
 
 });
