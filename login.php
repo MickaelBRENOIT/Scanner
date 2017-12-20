@@ -20,7 +20,7 @@
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $row['username'];
             $_SESSION['memberID'] = $row['id'];
-            $_SESSION['userRole'] = $row['role'];
+            $_SESSION['role'] = $row['id_role'];
             echo "state:ok";
             exit();
         }

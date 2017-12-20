@@ -91,81 +91,6 @@
         </div>
     </div>
 
-
- <!-- Modal For User Form-->
-    <div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="userLabel">User Form</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label class="sr-only" for="create-username-group">UserName</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon"  >UserName &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                            <input type="text" class="form-control" id="usernameTxt" placeholder="Min 3 characters (special characters not allowed)" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="create-email-group">Email</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon">Email &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                            <input type="text" class="form-control" id="emailTxt" placeholder="example@gmail.com" required>
-                        </div>
-                    </div>
-                 
-                    <div class="form-group">
-                        <label class="sr-only" for="create-password-group">Password</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon">Password &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                            <input type="password" class="form-control" id="passwordTxt" placeholder="Min 8 characters and need 1 digit, 1 uppercase, 1 lowercase, 1 special char" required>
-                        </div>
-                    </div>
-               
-                <div class="form-group">
-                    <label class="sr-only" for="create-username-group">Actif</label>
-                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon">Actif &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                             <form>
-                              <label class="radio-inline"  >
-                             <input type="radio" name="optradio" style="margin-left:40px"> Yes
-                              </label>
-                             <label class="radio-inline">
-                            <input type="radio" name="optradio">  No
-                              </label>
-                             </form>
-                    </div>
-                    </div>
-
-                        <div class="form-group">
-                    <label class="sr-only" for="create-username-group">Role</label>
-                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                         <div class="input-group-addon">Role &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                    <form>
-                              <label class="radio-inline"  >
-                             <input type="radio" name="optradio" style="margin-left:40px">  admin
-                              </label>
-                             <label class="radio-inline">
-                            <input type="radio" name="optradio">  client
-                              </label>
-                  </form>
-                    </div>
-                    </div>
-
-                    <div class="alert alert-danger text-center" role="alert" id="signup-errors-display">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="validateUser">Validate</button>
-                </div>
-            </div>
-        </div>
-    </div>
 	
 	<!-- Modal for diagram -->
 	<div class="modal fade" id="DiagramModal" tabindex="-1" role="dialog" aria-labelledby="DiagramModalLabel" aria-hidden="true">
@@ -188,22 +113,6 @@
 		</div>
 	  </div>
 	</div>
-
-
-     
-
-    <!-- ADMIN Container  -->
-
-                 <div id="container">
-
-
-                </div>
-
-
-        
-
-
-   <?php if((isset($_SESSION) && isset($_SESSION['loggedin']) && ($_SESSION["userRole"]=='client') ) ||(!isset($_SESSION) || !isset($_SESSION['loggedin'])) ) { ?>
 
     <div id="display-title" class="text-center">
         <h1>Port Scanner</h1>
@@ -264,10 +173,6 @@
 		</div>
 
     </div>
-<?php } else {?>
-
-<?php } ?>
-
 
     <br/><br/>
 
