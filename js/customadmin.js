@@ -361,7 +361,39 @@ $(document).ready(function () {
         }
     });
 	
+	/************************************************************************
+     *                                                                      *
+     *    SECTION : Modify a port                                   *
+     *                                                                      *
+     ************************************************************************/
+		
+	//Modal appearance function
+	$(document).on('click', '.modifyport', function () {
+        $('#updatePortModal').modal('show');
+		$("#modify-id-group").val($(this).val());
+    });
 	
+	
+	
+	$('#ModifyAPort').click(function () {
+			var id = $('#modify-id-group').val();
+			var port = $('#modify-portname-group').val();
+            var type = $('#modify-type-group').val();
+            var keyword = $('#modify-keyword-group').val();
+            var description = $('#modify-description-group').val();
+			var virus = $('#modify-virus-group').val();
+			
+			var datas = 'id=' + id + '&port=' + port + "&type=" + type + "&keyword=" + keyword + "&description=" + description + "&virus=" + virus;
+            $.ajax({
+                type: "POST",
+                url: "modify_a_port.php",
+                data: datas,
+                cache: false,
+                success: function (result) {
+					location.reload();            
+                }
+            })
+	});
 	
 	
 	

@@ -80,56 +80,57 @@
 </div>
 
 <!-- Modal update user -->
-<div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
+<div class="modal fade" id="updatePortModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="SignUpModalLabel">Update an user</h5>
+                <h5 class="modal-title" id="SignUpModalLabel">Update a port</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+			<input type="hidden" id="modify-id-group" value="">
                 <div class="form-group">
-                    <label class="sr-only" for="modify-username-group">Username</label>
+                    <label class="sr-only" for="modify-portname-group">Port</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon">Username &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                        <input type="text" class="form-control" id="modify-username-group" readonly>
+                        <div class="input-group-addon">Port&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;  </div>
+                        <input type="text" class="form-control" id="modify-portname-group" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="sr-only" for="modify-email-group">Email</label>
+                    <label class="sr-only" for="modify-type-group">Type</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon">Email &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                        <input type="text" class="form-control" id="modify-email-group" placeholder="example@gmail.com" required>
+                        <div class="input-group-addon">Type&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+                        <input type="text" class="form-control" id="modify-type-group" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="sr-only" for="modify-password-group">Activate</label>
+				<div class="form-group">
+                    <label class="sr-only" for="modify-keyword-group">Keyword</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon">Activate &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                        <input type="text" class="form-control" id="modify-activate-group" placeholder="Activate -> (Yes)" required>
+                        <div class="input-group-addon">Keyword&nbsp; &nbsp; &nbsp; </div>
+                        <input type="text" class="form-control" id="modify-keyword-group" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="sr-only" for="modify-password-group">Password</label>
+				<div class="form-group">
+                    <label class="sr-only" for="modify-description-group">Description</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon">Password &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                        <input type="password" class="form-control" id="modify-password-group" placeholder="Min 8 characters and need 1 digit, 1 uppercase, 1 lowercase, 1 special char" required>
+                        <div class="input-group-addon">Description</div>
+                        <input type="text" class="form-control" id="modify-description-group" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="sr-only" for="modify-confirm-password-group">Choose a role</label>
+				<div class="form-group">
+                    <label class="sr-only" for="modify-virus-group">Virus</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon">Choose a role &nbsp; &nbsp; &nbsp;</div>
-                        <select id="select-role-modify" class="form-control"></select>
+                        <div class="input-group-addon">Virus &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+                        <input type="text" class="form-control" id="modify-virus-group" required>
                     </div>
                 </div>
                 <div class="alert alert-danger text-center" role="alert" id="modify-errors-display"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-warning" id="ModifyAnUser">Modify an user</button>
+                <button type="button" class="btn btn-warning" id="ModifyAPort">Modify a port</button>
             </div>
         </div>
     </div>
