@@ -289,6 +289,80 @@ $(document).ready(function () {
             $("#modify-errors-display").show();
         }
     });
+    
+    /************************************************************************
+     *                                                                      *
+     *    SECTION : display list of ports                                   *
+     *                                                                      *
+     ************************************************************************/
+	$('#display-port-list').click(function () {
+        if ($('#display-port-list').hasClass("btn btn-primary")) {
+            $.ajax({
+                type: "POST",
+                url: "getPortList.php",
+                cache: false,
+                success: function (result) {
+                    $("#table-users").append(result);
+                    $('#display-list').removeClass().addClass("btn btn-danger");
+                    $('#display-list').html("Clear the list");
+                }
+            });
+        } else {
+            $("#table-users").empty();
+            $('#display-list').removeClass().addClass("btn btn-primary");
+            $('#display-list').html("Display all ports");
+        }
+    });
 
+	/************************************************************************
+     *                                                                      *
+     *    SECTION : add a port                                   *
+     *                                                                      *
+     ************************************************************************/
+		
+	//Modal appearance function
+	$('#add-port').click(function () {
+        $('#addPortModal').modal('show');
+    });
+	
+	
+	function checkIfAddAPortModalFormIsCorrectlyFilled(){
+		if($('#add-portname-group').val() && $('#add-type-group').val() && $('#add-keyword-group').val() && $('#add-description-group').val() && $('#add-virus-group').val()) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	//Actual port adding to database
+	$('#addAPort').click(function () {
+        var state = checkIfAddAPortModalFormIsCorrectlyFilled();
+        if (state) {
+
+            var port = $('#add-portname-group').val();
+            var type = $('#add-type-group').val();
+            var keyword = $('#add-keyword-group').val();
+            var description = $('#add-description-group').val();
+			var virus = $('#add-virus-group').val();
+
+            var datas = 'port=' + port + "&type=" + type + "&keyword=" + keyword + "&description=" + description + "&virus=" + virus;
+            $.ajax({
+                type: "POST",
+                url: "add_a_port.php",
+                data: datas,
+                cache: false,
+                success: function (result) {
+					location.reload();            
+                }
+            })
+        } else {
+            $("#add-errors-display").text("User inputs are incorrect, fields must be filled correctly and not empty.");
+            $("#add-errors-display").show();
+        }
+    });
+	
+	
+	
+	
 	
 });
