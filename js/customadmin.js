@@ -289,7 +289,6 @@ $(document).ready(function () {
             $("#modify-errors-display").show();
         }
     });
-    
-    
 
+	
 });

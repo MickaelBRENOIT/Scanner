@@ -46,7 +46,7 @@
                   <a class="nav-link" href="indexadmin.php">Manage Users</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">XML</a>
+                  <a class="nav-link" href="port_list.php">XML</a>
                 </li>
                 <?php } ?>
                 

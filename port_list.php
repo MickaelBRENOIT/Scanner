@@ -1,0 +1,157 @@
+<?php
+    include_once("header.php");
+?>
+
+<!-- Modal add port -->
+<div class="modal fade" id="addPortModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="SignUpModalLabel">Create a port</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="sr-only" for="add-portname-group">Port</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon">Port&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;  </div>
+                        <input type="text" class="form-control" id="add-portname-group" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="add-type-group">Type</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon">Type&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+                        <input type="text" class="form-control" id="add-type-group" required>
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="sr-only" for="add-keyword-group">Keyword</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon">Keyword&nbsp; &nbsp; &nbsp; </div>
+                        <input type="text" class="form-control" id="add-keyword-group" required>
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="sr-only" for="add-description-group">Description</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon">Description</div>
+                        <input type="text" class="form-control" id="add-description-group" required>
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="sr-only" for="add-virus-group">Virus</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon">Virus &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+                        <input type="text" class="form-control" id="add-virus-group" required>
+                    </div>
+                </div>
+                <div class="alert alert-danger text-center" role="alert" id="add-errors-display"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="addAPort">Add an port</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal delete user -->
+<div class="modal fade" id="DeleteUserModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="SignUpModalLabel">Delete an user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning text-center" role="alert" id="delete-user-display"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="DeleteAnUser">Delete the user</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal update user -->
+<div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="SignUpModalLabel">Update an user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="sr-only" for="modify-username-group">Username</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon">Username &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                        <input type="text" class="form-control" id="modify-username-group" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="modify-email-group">Email</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon">Email &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                        <input type="text" class="form-control" id="modify-email-group" placeholder="example@gmail.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="modify-password-group">Activate</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon">Activate &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                        <input type="text" class="form-control" id="modify-activate-group" placeholder="Activate -> (Yes)" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="modify-password-group">Password</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon">Password &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                        <input type="password" class="form-control" id="modify-password-group" placeholder="Min 8 characters and need 1 digit, 1 uppercase, 1 lowercase, 1 special char" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="modify-confirm-password-group">Choose a role</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon">Choose a role &nbsp; &nbsp; &nbsp;</div>
+                        <select id="select-role-modify" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="alert alert-danger text-center" role="alert" id="modify-errors-display"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" id="ModifyAnUser">Modify an user</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3 mb-3">
+    <div class="text-center">
+        <h1>Port List</h1>
+    </div>
+</div>
+
+<hr style="display: block; margin-top: 0.5em; margin-bottom: 0.5em; margin-left: auto; margin-right: auto; border-style: inset; border-width: 1px;">
+<div class="container mt-3 mb-3">
+    <div class="text-center">
+        <button class="btn btn-success" id="add-port">Add a port</button>
+        <button class="btn btn-primary" id="display-port-list">Display all ports</button>
+    </div>
+</div>
+
+<div id="table-users" class="container"> 
+</div>
+
+<?php
+    include_once("footer.php");
+?>
