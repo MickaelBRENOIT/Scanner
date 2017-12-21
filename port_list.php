@@ -58,28 +58,28 @@
     </div>
 </div>
 
-<!-- Modal delete user -->
-<div class="modal fade" id="DeleteUserModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
+<!-- Modal delete port -->
+<div class="modal fade" id="DeletePortModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="SignUpModalLabel">Delete an user</h5>
+                <h5 class="modal-title" id="SignUpModalLabel">Delete a port</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="alert alert-warning text-center" role="alert" id="delete-user-display"></div>
+                <div class="alert alert-warning text-center" role="alert" id="delete-port-display"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" id="DeleteAnUser">Delete the user</button>
+                <button type="button" class="btn btn-danger" id="DeleteAnPort">Delete the port</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Modal update user -->
+<!-- Modal update port -->
 <div class="modal fade" id="updatePortModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -150,7 +150,7 @@
     </div>
 </div>
 
-<div id="table-users" class="container"> 
+<div id="table-ports" class="container"> 
 </div>
 
 <?php

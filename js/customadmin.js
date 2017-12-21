@@ -302,13 +302,13 @@ $(document).ready(function () {
                 url: "getPortList.php",
                 cache: false,
                 success: function (result) {
-                    $("#table-users").append(result);
+                    $("#table-ports").append(result);
                     $('#display-list').removeClass().addClass("btn btn-danger");
                     $('#display-list').html("Clear the list");
                 }
             });
         } else {
-            $("#table-users").empty();
+            $("#table-ports").empty();
             $('#display-list').removeClass().addClass("btn btn-primary");
             $('#display-list').html("Display all ports");
         }
@@ -356,7 +356,7 @@ $(document).ready(function () {
                 }
             })
         } else {
-            $("#add-errors-display").text("User inputs are incorrect, fields must be filled correctly and not empty.");
+            $("#add-errors-display").text("Port inputs are incorrect, fields must be filled correctly and not empty.");
             $("#add-errors-display").show();
         }
     });
@@ -394,6 +394,42 @@ $(document).ready(function () {
                 }
             })
 	});
+	
+	/************************************************************************
+     *                                                                      *
+     *    SECTION : Delete a port                                   *
+     *                                                                      *
+     ************************************************************************/
+	$(document).on('click', '.deleteport', function () {
+		$('#delete-port-display').text("Do you really want to delete this port ?");
+		$('#DeletePortModal').modal('show');
+		$('#DeleteAnPort').val($(this).val());
+	});
+	
+	$('#DeleteAnPort').click(function () {
+		var id = $(this).val();
+		
+		var datas = 'id=' + id;
+		
+		$.ajax({
+                type: "POST",
+                url: "delete_a_port.php",
+                data: datas,
+                cache: false,
+                success: function (result) {
+					location.reload();            
+                }
+            })
+		
+	});
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
