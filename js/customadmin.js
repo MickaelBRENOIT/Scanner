@@ -327,7 +327,7 @@ $(document).ready(function () {
 	
 	
 	function checkIfAddAPortModalFormIsCorrectlyFilled(){
-		if($('#add-portname-group').val() && $('#add-type-group').val() && $('#add-keyword-group').val() && $('#add-description-group').val() && $('#add-virus-group').val()) {
+		if($('#add-portname-group').val() && $('#add-type-group').val()) {
 			return true;
 		}else{
 			return false;
