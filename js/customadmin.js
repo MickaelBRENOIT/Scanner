@@ -178,5 +178,118 @@ $(document).ready(function () {
             }
         })
     });
+    
+    /************************************************************************
+     *                                                                      *
+     *    SECTION : Update an user Form                                     *
+     *                                                                      *
+     ************************************************************************/
+    
+    $("#modify-errors-display").hide();
+    
+    $(document).on('click', '.modifyuser', function () {
+        username = $(this).val();
+        var datas = 'username=' + username;
+        
+        $.ajax({
+            type: "POST",
+            url: "getroles.php",
+            cache: false,
+            success: function (result) {
+                $('#select-role-modify').empty();
+                $('#select-role-modify').append(result);
+            }
+        });
+        
+        $.ajax({
+            type: "POST",
+            url: "getanuser.php",
+            data: datas,
+            cache: false,
+            success: function (result) {
+                
+                result = result.split("&");
+                var user = result[0];
+                var mail = result[1];
+                var acti = result[2];
+                var role = result[3];
+                
+                $("#modify-username-group").val(user);
+                $("#modify-email-group").val(mail);
+                $("#modify-activate-group").val(acti);
+                $("#select-role-modify option[value="+role+"]").prop("selected", true);
+                
+                $('#updateUserModal').modal('show');
+                
+            }
+        })
+    });
+    
+    var inputEmailModifyValid = false;
+    var inputPasswordModifyValid = false;
+    
+    /* Check if email is really an email address */
+    $("#modify-email-group").keyup(function () {
+        var contents = $('#modify-email-group').val();
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(contents)) {
+            if ($("#modify-email-group").hasClass("is-invalid") || !$("#modify-email-group").hasClass("is-valid")) {
+                $("#modify-email-group").removeClass("is-invalid"); // remove class if it possible otherwise it ignore this instruction
+                $("#modify-email-group").addClass("is-valid");
+            }
+            inputEmailModifyValid = true;
+        } else {
+            if ($("#modify-email-group").hasClass("is-valid") || !$("#modify-email-group").hasClass("is-invalid")) {
+                $("#modify-email-group").removeClass("is-valid");
+                $("#modify-email-group").addClass("is-invalid");
+            }
+            inputEmailModifyValid = false;
+        }
+    });
+    
+    /* Check if password is 8 characters min. with at least 1 lowercase, 1 uppercase, 1 digit and 1 special char */
+    $("#modify-password-group").keyup(function () {
+        var contents = $('#modify-password-group').val();
+        if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/.test(contents)) {
+            if ($("#modify-password-group").hasClass("is-invalid") || !$("#modify-password-group").hasClass("is-valid")) {
+                $("#modify-password-group").removeClass("is-invalid"); // remove class if it possible otherwise it ignore this instruction
+                $("#modify-password-group").addClass("is-valid");
+            }
+            inputPasswordModifyValid = true;
+        } else {
+            if ($("#modify-password-group").hasClass("is-valid") || !$("#modify-password-group").hasClass("is-invalid")) {
+                $("#modify-password-group").removeClass("is-valid");
+                $("#modify-password-group").addClass("is-invalid");
+            }
+            inputPasswordModifyValid = false;
+        }
+    });
+    
+    $('#ModifyAnUser').click(function (){
+        
+        if (inputEmailModifyValid && inputPasswordModifyValid) {
+
+            var username = $('#modify-username-group').val();
+            var email = $('#modify-email-group').val();
+            var activate = $('#modify-activate-group').val();
+            var password = $('#modify-password-group').val();
+            var role = $('#select-role-modify').val();
+
+            var datas = 'username=' + username + '&email=' + email + "&activate=" + activate + "&password=" + password + "&role=" + role;
+            $.ajax({
+                type: "POST",
+                url: "modify_an_user.php",
+                data: datas,
+                cache: false,
+                success: function (result) {
+                    location.reload();
+                }
+            })
+        } else {
+            $("#modify-errors-display").text("User inputs are incorrect, fields must be filled correctly and not empty.");
+            $("#modify-errors-display").show();
+        }
+    });
+    
+    
 
 });
