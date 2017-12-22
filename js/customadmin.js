@@ -438,10 +438,14 @@ $(document).ready(function () {
         $('#importXmlModal').modal('show');
     });
 	
-
 	
 	
 	
+	/************************************************************************
+     *                                                                      *
+     *    SECTION : Export ports through XML file                           *
+     *                                                                      *
+     ************************************************************************/	
 	$('#display-xml-export').click(function () {
 		$('#export-xml-display').text("Do you want to download the port database in an XML file format ?");
 		$('#ExportXmlModal').modal('show');
