@@ -303,14 +303,14 @@ $(document).ready(function () {
                 cache: false,
                 success: function (result) {
                     $("#table-ports").append(result);
-                    $('#display-list').removeClass().addClass("btn btn-danger");
-                    $('#display-list').html("Clear the list");
+                    $('#display-port-list').removeClass().addClass("btn btn-danger");
+                    $('#display-port-list').html("Clear the list");
                 }
             });
         } else {
             $("#table-ports").empty();
-            $('#display-list').removeClass().addClass("btn btn-primary");
-            $('#display-list').html("Display all ports");
+            $('#display-port-list').removeClass().addClass("btn btn-primary");
+            $('#display-port-list').html("Display all ports");
         }
     });
 
