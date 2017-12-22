@@ -442,6 +442,37 @@ $(document).ready(function () {
 	
 	
 	
+	$('#display-xml-export').click(function () {
+		$('#export-xml-display').text("Do you want to download the port database in an XML file format ?");
+		$('#ExportXmlModal').modal('show');
+		
+		$.ajax({
+                type: "POST",
+                url: "create_XML_file.php",
+                cache: false,
+                success: function (result) {
+					$('#export-xml-display').text("Do you want to download the port database in an XML file format ?");
+					$('#ExportXmlModal').modal('show');           
+                }
+        })
+		
+    });
+	
+	
+	
+	$('#ExportAPort').click(function () {
+		$.ajax({
+                type: "POST",
+                url: "delete_XML_file.php",
+                cache: false,
+                success: function (result) {
+					location.reload();
+                }
+        })
+	});
+	
+	
+	
 	
 	
 });

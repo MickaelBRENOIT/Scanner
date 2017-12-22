@@ -165,6 +165,35 @@
     </div>
 </div>
 
+<!-- Modal for xml export -->
+<div class="modal fade" id="ExportXmlModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="SignUpModalLabel">Export ports database into XML</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning text-center" role="alert" id="export-xml-display"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<form method="get" action="upload/exported.xml">
+					<button type="button" class="btn btn-danger" id="ExportAPort"><a href="upload/exported.xml" download>Export</a></button>
+				</form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 <div class="container mt-3 mb-3">
     <div class="text-center">
         <h1>Port List</h1>
