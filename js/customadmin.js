@@ -397,7 +397,7 @@ $(document).ready(function () {
 	
 	/************************************************************************
      *                                                                      *
-     *    SECTION : Delete a port                                   *
+     *    SECTION : Delete a port                                           *
      *                                                                      *
      ************************************************************************/
 	$(document).on('click', '.deleteport', function () {
@@ -428,6 +428,17 @@ $(document).ready(function () {
 	
 	
 	
+	/************************************************************************
+     *                                                                      *
+     *    SECTION : Import ports through XML file                           *
+     *                                                                      *
+     ************************************************************************/
+
+	$('#display-xml-import').click(function () {
+        $('#importXmlModal').modal('show');
+    });
+	
+
 	
 	
 	

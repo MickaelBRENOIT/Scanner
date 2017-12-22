@@ -136,6 +136,35 @@
     </div>
 </div>
 
+<!-- Modal for xml import -->
+<div class="modal fade" id="importXmlModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="SignUpModalLabel">Import XML</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+			<form action="importXML.php" method="post" enctype="multipart/form-data">
+				<div class="modal-body">
+				
+					<h2>Upload File</h2>
+					<label for="fileSelect">Filename:</label>
+					<input type="file" name="xml" id="fileSelect">
+					
+				
+				</div>
+				<div class="modal-footer">
+					<div class="fileupload-buttonbar">
+							<input type="submit" name="submit" value="Upload" class="btn btn-success start">
+                    </div>
+				</div>
+			</form>
+        </div>
+    </div>
+</div>
+
 <div class="container mt-3 mb-3">
     <div class="text-center">
         <h1>Port List</h1>
@@ -147,6 +176,8 @@
     <div class="text-center">
         <button class="btn btn-success" id="add-port">Add a port</button>
         <button class="btn btn-primary" id="display-port-list">Display all ports</button>
+		<button class="btn btn-success" id="display-xml-import">Import port through XML file</button>
+		<button class="btn btn-primary" id="display-xml-export">Export port database into an XML file</button>
     </div>
 </div>
 
