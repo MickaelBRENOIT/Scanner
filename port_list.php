@@ -181,7 +181,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				<form method="get" action="upload/exported.xml">
-					<button type="button" class="btn btn-danger" id="ExportAPort"><a href="upload/exported.xml" download>Export</a></button>
+					<a class="btn btn-danger" href="upload/exported.xml" download>Export</a>
 				</form>
                 
             </div>
