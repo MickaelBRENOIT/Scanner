@@ -191,7 +191,7 @@ $(document).ready(function () {
                             // update the result table
                             $("#display-item-each-row").append("<tr>" +
                                 "<th  scope='row'>" + count + "</th>" +
-                                "<td>" + port + "</td>" +
+                                "<td class='portNumber'>" + port + "</td>" +
                                 "<td>" + code + "</td>" +
                                 "<td>" + mess + "</td>" +
                                 "</tr>");
@@ -432,6 +432,36 @@ $(document).ready(function () {
 			p.textContent = `The port ${arrayOpenedPorts[i]} is opened.`;
 			document.getElementById("open").appendChild(p);
 		}
+		
+	 });
+	 
+	 
+	 
+	/************************************************************************
+     *                                                                      *
+     *    SECTION : Saving ports                                            *
+     *                                                                      *
+     ************************************************************************/
+	 
+	$("#save-ports").click(function() {
+		 
+		var ports = document.getElementsByClassName("portNumber");
+		var userName = document.getElementById("userName").innerHTML;
+		var datas = []
+		for(var i=0; i < ports.length; i++) {
+			datas[i]=ports[i].innerHTML;
+		}
+		
+		$.ajax({
+                type: "POST",
+                url: "savePorts.php",
+                data: {id:datas, userName:userName},
+                cache: false,
+                success: function (result){
+                    alert("Sauvegarde");
+                }
+            })
+		
 		
 	 });
 

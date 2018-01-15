@@ -64,6 +64,7 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#SignInModal">Sign In</button>
                     <?php } else { ?>
                     <p style="color: white;" class="pt-2 my-sm-0 mr-3">Hello, <?php if(isset($_SESSION['username'])) { echo $_SESSION["username"]; } ?></p>
+					<p style="display:none" id="userName"><?php if(isset($_SESSION['username'])) { echo $_SESSION["username"]; } ?></p>
 
                     <button class="btn btn-outline-danger my-2 my-sm-0" type="button" id="processLogout">Sign Out</button>
                     <?php } ?>
