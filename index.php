@@ -165,6 +165,12 @@
 				<button type="submit" class="btn btn-danger" id="view-diagram" data-toggle="modal" data-target="#DiagramModal">View Diagram</button>
 			</div>
 			
+			<?php if(isset($_SESSION) && isset($_SESSION['loggedin']) && $_SESSION['role'] == 1) { ?>
+			<div class="form-group col-md-6 text-center" >
+				<button type="submit" class="btn btn-danger" id="save-ports">Save Diagram</button>
+			</div>
+			<?php } ?>
+			
 			<div class="form-group col-md-6 text-right">
 				<button type="submit" class="btn btn-primary" id="submit-form">Scan It Now !</button>
 			</div>

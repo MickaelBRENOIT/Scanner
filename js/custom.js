@@ -21,6 +21,7 @@ $(document).ready(function () {
     $("#errors-display").hide();
     $("#progress-bar-visibility").hide();
 	$('#view-diagram').hide();
+	$('#save-ports').hide();
     var inputAddressValid = false;
     var inputPortMinValid = false;
     var inputPortMaxValid = false;
@@ -123,6 +124,7 @@ $(document).ready(function () {
                 total_ports = (maxi - mini + 1);
 
 				$('#view-diagram').hide();
+				$('#save-ports').hide();
                 $("#errors-display").hide();
                 $("#progress-bar-visibility").show();
                 $('#progress-bar-to-update').attr('aria-valuemax', total_ports);
@@ -200,6 +202,7 @@ $(document).ready(function () {
 								bouton.disabled=false;
 								count_ajax_calls = 0;
 								$('#view-diagram').show();
+								$('#save-ports').show();
 							}
 						}
                     })
