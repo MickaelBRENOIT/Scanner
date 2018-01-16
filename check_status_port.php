@@ -26,7 +26,7 @@
         } else if($type === "UDP") {
 
             $socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
-            socket_bind($socket, '127.0.0.1', $port);        
+            socket_bind($socket, $ip, $port);        
             socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array('sec' => 1, 'usec' => 0));
 
             $from = '';
