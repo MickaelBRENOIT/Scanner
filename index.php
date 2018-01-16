@@ -155,6 +155,18 @@
             </div>
         </div>
 
+        <!-- Select a port type to scan -->
+        <div class="form-group">
+            <label class="sr-only" for="max-port-group">Port Type</label>
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon">Port Type &nbsp;</div>
+                <select class="custom-select w-100" id="typeport">
+                    <option value="TCP">TCP</option>
+                    <option value="UDP">UDP</option>
+                </select>
+            </div>
+        </div>
+
         <div class="alert alert-danger text-center" role="alert" id="errors-display">
         </div>
 

@@ -105,6 +105,7 @@ $(document).ready(function () {
 		var bouton = this;
         var mini = parseInt($('#min-port-group').val());
         var maxi = parseInt($('#max-port-group').val());
+        var type = $('#typeport').val();
 		
 
         /* check if port min < max ohterwise an error is displayed and the click event is disabled */
@@ -148,7 +149,7 @@ $(document).ready(function () {
                 /* processing tests on every port between mini and maxi */
                 var ip = $('#ip-group').val();
                 for (var i = mini; i <= maxi; i++) {
-                    var datas = 'ip=' + ip + "&port=" + i;
+                    var datas = 'ip=' + ip + "&port=" + i + "&type=" + type;
                     $.ajax({
                         type: "POST",
                         url: "check_status_port.php",
