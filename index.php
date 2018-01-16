@@ -174,14 +174,11 @@
 			<div class="row">
 			
 			<div class="form-group col-md-6 text-left" >
-				<button type="submit" class="btn btn-danger" id="view-diagram" data-toggle="modal" data-target="#DiagramModal">View Diagram</button>
+				<button type="submit" class="btn btn-danger mb-3" id="view-diagram" data-toggle="modal" data-target="#DiagramModal">View Diagram</button>
+                <?php if(isset($_SESSION) && isset($_SESSION['loggedin'])) { ?>
+                <button type="submit" class="btn btn-danger" id="save-ports">Save Diagram</button>
+                <?php } ?>
 			</div>
-			
-			<?php if(isset($_SESSION) && isset($_SESSION['loggedin']) && $_SESSION['role'] == 1) { ?>
-			<div class="form-group col-md-6 text-center" >
-				<button type="submit" class="btn btn-danger" id="save-ports">Save Diagram</button>
-			</div>
-			<?php } ?>
 			
 			<div class="form-group col-md-6 text-right">
 				<button type="submit" class="btn btn-primary" id="submit-form">Scan It Now !</button>
