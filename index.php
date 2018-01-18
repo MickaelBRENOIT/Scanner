@@ -176,7 +176,7 @@
 			<div class="form-group col-md-6 text-left" >
 				<button type="submit" class="btn btn-danger mb-3" id="view-diagram" data-toggle="modal" data-target="#DiagramModal">View Diagram</button>
                 <?php if(isset($_SESSION) && isset($_SESSION['loggedin'])) { ?>
-                <button type="submit" class="btn btn-danger" id="save-ports">Save Diagram</button>
+                <br/><button type="submit" class="btn btn-danger" id="save-ports">Save Diagram</button>
                 <?php } ?>
 			</div>
 			
