@@ -98,6 +98,10 @@ $(document).ready(function () {
     /* called when the submit button is pressed */
     $("#submit-form").click(function () {
 		
+		//Destruction of the previous diagram (if the variable chart is not null)
+		if(!!chart)
+			chart.destroy();
+		
 		//Reinitialisation of the array of opened ports
 		arrayOpenedPorts = [];
 		array = [];
@@ -402,10 +406,14 @@ $(document).ready(function () {
      *                                                                      *
      ************************************************************************/
 
+	 //We put chart scope out of the function which create the chart so
+	 //the chart can be destroyed in the scanning function.
+	 var chart = null;
+	 
 	 $("#view-diagram").click(function() {
 		 
 		 //Diagram creation
-		 new Chart(document.getElementById("doughnut-chart"), {
+		 chart = new Chart(document.getElementById("doughnut-chart"), {
 			type: 'doughnut',
 			data: {
 			  labels: ["Closed", "Opened", "Filtered"],
