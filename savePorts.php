@@ -17,7 +17,7 @@
 			error_log($id);
 			
 			//$req_create = $con->prepareDB("INSERT INTO savedport (userId, virusId, scanDate) SELECT (SELECT id from users WHERE username='$userName'), id FROM virus WHERE id = ?, NOW()");
-			$req_create = $con->prepareDB("INSERT INTO `savedport`(`virusId`, `userId`, `scanDate`) VALUES ((SELECT id from users WHERE username='$userName'),(SELECT id FROM virus WHERE id = ?),(SELECT NOW()))");
+			$req_create = $con->prepareDB("INSERT INTO `savedport`(`userId`, `virusId`, `scanDate`) VALUES ((SELECT id from users WHERE username='$userName'),(SELECT id FROM virus WHERE id = ?),(SELECT NOW()))");
 			$req_create->bindParam(1, $id);
 			$req_create->execute();
 		}
