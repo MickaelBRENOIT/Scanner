@@ -209,8 +209,10 @@ $(document).ready(function () {
 								count_ajax_calls = 0;
 								$('#view-diagram').show();
 								$('#save-ports').show();
+								$("#progress-bar-visibility").hide();
+								showUsersVulnerabilities();
 							}
-							$("#progress-bar-visibility").hide();
+							
 						}
                     })
                 }
@@ -475,5 +477,34 @@ $(document).ready(function () {
 		
 		
 	 });
+	 
+	/************************************************************************
+     *                                                                      *
+     *    SECTION : Vulnerabilities display                                 *
+     *                                                                      *
+     ************************************************************************/
+	function showUsersVulnerabilities(){
+		var ports = document.getElementsByClassName("portNumber");
+		
+		var datas = []
+		for(var i=0; i < ports.length; i++) {
+			datas[i]=ports[i].innerHTML;
+		}
+		$.ajax({
+            type: "POST",
+            url: "getVirusWithPortName.php",
+            data: {id:datas},
+            cache: false,
+            success: function (result){
+				result = result.split("&");
+				for(var i=result.length-1; i>=0; i--){
+					$('#vulResponse').append(document.createElement("p").textContent=result[i]);
+					$('#vulResponse').append(document.createElement("br"));
+				}
+                $('#VulModal').modal('toggle');
+            }
+        })
+		
+	}
 
 });

@@ -233,6 +233,26 @@
         </div>
     </div>
     <?php } ?>
+	
+	<!-- Modal about user's vulnerabilities considering the open ports he has -->
+	<div class="modal fade" id="VulModal" tabindex="-1" role="dialog" aria-labelledby="VulModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Your vulnerabilities</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			<div id="vulResponse"></div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
 
     <?php
     include_once("footer.php");
