@@ -196,8 +196,8 @@
         <p class="lead" id="display-progress"></p>
     </div>
     <!-- Display a progress bar which shows a percentage of elements treated -->
-    <div id="progress-bar-visibility" class="progress col-md-8 offset-md-2" style="padding: 0 0 0 0;">
-        <div id="progress-bar-to-update" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0"></div>
+    <div id="progress-bar-visibility" >
+        <img src="css/loading.gif" alt="loading animated gif" class="img-responsive center-block" style="display:block;margin:0 auto;" />
     </div>
     <br/>
 

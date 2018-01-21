@@ -210,6 +210,7 @@ $(document).ready(function () {
 								$('#view-diagram').show();
 								$('#save-ports').show();
 							}
+							$("#progress-bar-visibility").hide();
 						}
                     })
                 }
