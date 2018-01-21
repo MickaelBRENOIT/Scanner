@@ -496,6 +496,7 @@ $(document).ready(function () {
             data: {id:datas},
             cache: false,
             success: function (result){
+				$('#vulResponse').empty();
 				result = result.split("&");
 				for(var i=result.length-1; i>=0; i--){
 					$('#vulResponse').append(document.createElement("p").textContent=result[i]);
