@@ -104,8 +104,11 @@
                 <div class="form-group">
                     <label class="sr-only" for="modify-type-group">Type</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon">Type&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
-                        <input type="text" class="form-control" id="modify-type-group" required>
+                        <div class="input-group-addon">Port Type &nbsp;&nbsp;&nbsp;</div>
+							<select class="custom-select w-100" id="modify-type-group">
+								<option value="TCP">TCP</option>
+								<option value="UDP">UDP</option>
+							</select>
                     </div>
                 </div>
 				<div class="form-group">

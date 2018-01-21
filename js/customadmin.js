@@ -461,8 +461,33 @@ $(document).ready(function () {
 		
 	//Modal appearance function
 	$(document).on('click', '.modifyport', function () {
-        $('#updatePortModal').modal('show');
+		username = $(this).val();
+        var datas = 'id=' + username;
 		$("#modify-id-group").val($(this).val());
+		$.ajax({
+            type: "POST",
+            url: "getaport.php",
+            data: datas,
+            cache: false,
+            success: function (result) {
+				result = result.split("&");
+                var port = result[0];
+                var type = result[1];
+                var keyword = result[2];
+                var description = result[3];
+				var virus = result[4];
+                
+                $("#modify-portname-group").val(port);
+				$("#modify-type-group option[value="+type+"]").prop("selected", true);
+                $("#modify-keyword-group").val(keyword);
+				$("#modify-description-group").val(description);
+				$("#modify-virus-group").val(virus);
+                
+                
+                $('#updatePortModal').modal('show');  
+								
+            }
+        })
     });
 	
 	
@@ -476,15 +501,7 @@ $(document).ready(function () {
 			var virus = $('#modify-virus-group').val();
 			
 			var datas = 'id=' + id + '&port=' + port + "&type=" + type + "&keyword=" + keyword + "&description=" + description + "&virus=" + virus;
-            $.ajax({
-                type: "POST",
-                url: "modify_a_port.php",
-                data: datas,
-                cache: false,
-                success: function (result) {
-					location.reload();            
-                }
-            })
+            
 	});
 	
 	/************************************************************************
