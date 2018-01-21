@@ -26,14 +26,15 @@
         } else if($type === "UDP") {
 
             $socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
-            //socket_bind($socket, $ip, $port);
+            socket_bind($socket, $ip, $port);
             socket_connect($socket,$ip,1);       
             socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array('sec' => 1, 'usec' => 0));
 
-            $from = '';
-            socket_recvfrom($socket, $buf, 12, 0, $from, $port);
+            /*$from = '';
+            socket_recvfrom($socket, $buf, 12, 0, $from, $port);*/
 
-            //socket_send($socket,'foo',3,0);
+            $message="Ping";
+            socket_send($socket, $message, strlen($message), 0, $ip, $port);
 
             $socket_code = socket_last_error($socket);
             $socket_mess = utf8_encode(socket_strerror($socket_code));
