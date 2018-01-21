@@ -50,7 +50,11 @@
                   <a class="nav-link" href="port_list.php">XML</a>
                 </li>
                 <?php } ?>
-                
+				<?php if(isset($_SESSION) && isset($_SESSION['loggedin'])) { ?>
+				<li class="nav-item">
+                  <a class="nav-link" href="yourscans.php">Check your scans</a>
+                </li>
+                <?php } ?>
             </ul>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

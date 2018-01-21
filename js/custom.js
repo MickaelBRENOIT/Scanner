@@ -461,8 +461,8 @@ $(document).ready(function () {
 		var ports = document.getElementsByClassName("portNumber");
 		var userName = document.getElementById("userName").innerHTML;
 		var datas = []
-		for(var i=0; i < ports.length; i++) {
-			datas[i]=ports[i].innerHTML;
+		for(var i=0; i < arrayOpenedPorts.length; i++) {
+			datas[i]=arrayOpenedPorts[i];
 		}
 		
 		$.ajax({

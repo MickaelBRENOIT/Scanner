@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 21 Janvier 2018 à 20:52
+-- Généré le :  Dim 21 Janvier 2018 à 22:59
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -46,6 +46,7 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `savedport` (
+  `id` int(11) NOT NULL,
   `virusId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `scanDate` date NOT NULL
@@ -55,10 +56,13 @@ CREATE TABLE `savedport` (
 -- Contenu de la table `savedport`
 --
 
-INSERT INTO `savedport` (`virusId`, `userId`, `scanDate`) VALUES
-(6, 113239, '2018-01-21'),
-(6, 113237, '2018-01-21'),
-(6, 113241, '2018-01-21');
+INSERT INTO `savedport` (`id`, `virusId`, `userId`, `scanDate`) VALUES
+(1, 113476, 6, '2018-01-21'),
+(2, 113961, 6, '2018-01-21'),
+(3, 113370, 5, '2018-01-21'),
+(4, 113476, 5, '2018-01-21'),
+(5, 113961, 5, '2018-01-21'),
+(6, 113476, 6, '2018-01-20');
 
 -- --------------------------------------------------------
 
@@ -12714,7 +12718,7 @@ ALTER TABLE `roles`
 -- Index pour la table `savedport`
 --
 ALTER TABLE `savedport`
-  ADD PRIMARY KEY (`virusId`,`userId`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `users`
@@ -12738,6 +12742,11 @@ ALTER TABLE `virus`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `savedport`
+--
+ALTER TABLE `savedport`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
