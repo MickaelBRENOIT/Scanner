@@ -11,6 +11,7 @@ $(document).ready(function () {
     } catch(err) {
         console.log("Account couldn't be activated : " + err.message);
     }
+	 
 
     /************************************************************************
      *                                                                      *

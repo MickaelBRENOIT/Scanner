@@ -1,4 +1,96 @@
 $(document).ready(function () {
+	
+	/************************************************************************
+     *                                                                      *
+     *    SECTION : Add a port Form                                         *
+     *                                                                      *
+     ************************************************************************/
+	 
+	$("#add-port-errors-display").hide();
+	var portNameValid = false;
+	var keywordNameValid = false;
+	var descriptionNameValid = false;
+	var virusNameValid = false;
+	
+	/*Check if port name is composed of greater than 0 numbers*/
+	$("#add-portname-group").keyup(function () {
+        var contents = $('#add-portname-group').val();
+        if (/^[1-9]\d*$/.test(contents)) {
+            if ($("#add-portname-group").hasClass("is-invalid") || !$("#add-portname-group").hasClass("is-valid")) {
+                $("#add-portname-group").removeClass("is-invalid"); // remove class if it possible otherwise it ignore this instruction
+                $("#add-portname-group").addClass("is-valid");
+            }
+            portNameValid = true;
+        } else {
+            if ($("#add-portname-group").hasClass("is-valid") || !$("#create-username-group").hasClass("is-invalid")) {
+                $("#add-portname-group").removeClass("is-valid");
+                $("#add-portname-group").addClass("is-invalid");
+            }
+            portNameValid = false;
+        }
+    });
+	
+	/* Check if keyword is not empty */
+	$("#add-keyword-group").keyup(function () {
+        var contents = $('#add-keyword-group').val();
+        if (/^(?!\s*$).+/.test(contents)) {
+            if ($("#add-keyword-group").hasClass("is-invalid") || !$("#add-keyword-group").hasClass("is-valid")) {
+                $("#add-keyword-group").removeClass("is-invalid"); // remove class if it possible otherwise it ignore this instruction
+                $("#add-keyword-group").addClass("is-valid");
+            }
+            keywordNameValid = true;
+        } else {
+            if ($("#add-keyword-group").hasClass("is-valid") || !$("#create-username-group").hasClass("is-invalid")) {
+                $("#add-keyword-group").removeClass("is-valid");
+                $("#add-keyword-group").addClass("is-invalid");
+            }
+            keywordNameValid = false;
+        }
+    });
+	
+	/* Check if description is not empty */
+	$("#add-description-group").keyup(function () {
+        var contents = $('#add-description-group').val();
+        if (/^(?!\s*$).+/.test(contents)) {
+            if ($("#add-description-group").hasClass("is-invalid") || !$("#add-description-group").hasClass("is-valid")) {
+                $("#add-description-group").removeClass("is-invalid"); // remove class if it possible otherwise it ignore this instruction
+                $("#add-description-group").addClass("is-valid");
+            }
+            descriptionNameValid = true;
+        } else {
+            if ($("#add-description-group").hasClass("is-valid") || !$("#create-username-group").hasClass("is-invalid")) {
+                $("#add-description-group").removeClass("is-valid");
+                $("#add-description-group").addClass("is-invalid");
+            }
+            descriptionNameValid = false;
+        }
+    });
+	
+	/* Check if virus is not empty */
+	$("#add-virus-group").keyup(function () {
+        var contents = $('#add-virus-group').val();
+        if (/^(?!\s*$).+/.test(contents)) {
+            if ($("#add-virus-group").hasClass("is-invalid") || !$("#add-virus-group").hasClass("is-valid")) {
+                $("#add-virus-group").removeClass("is-invalid"); // remove class if it possible otherwise it ignore this instruction
+                $("#add-virus-group").addClass("is-valid");
+            }
+            virusNameValid = true;
+        } else {
+            if ($("#add-virus-group").hasClass("is-valid") || !$("#create-username-group").hasClass("is-invalid")) {
+                $("#add-virus-group").removeClass("is-valid");
+                $("#add-virus-group").addClass("is-invalid");
+            }
+            virusNameValid = false;
+        }
+    });
+	
+	function enableSubmitButtonIfAllInputAreCorrectInAddPortForm() {
+		if(portNameValid && keywordNameValid && descriptionNameValid && virusNameValid)
+			return true;
+		else	
+			return false;
+			
+	}
 
     /************************************************************************
      *                                                                      *
@@ -336,7 +428,7 @@ $(document).ready(function () {
 	
 	//Actual port adding to database
 	$('#addAPort').click(function () {
-        var state = checkIfAddAPortModalFormIsCorrectlyFilled();
+        var state = enableSubmitButtonIfAllInputAreCorrectInAddPortForm();
         if (state) {
 
             var port = $('#add-portname-group').val();
@@ -356,8 +448,8 @@ $(document).ready(function () {
                 }
             })
         } else {
-            $("#add-errors-display").text("Port inputs are incorrect, fields must be filled correctly and not empty.");
-            $("#add-errors-display").show();
+            $("#add-port-errors-display").text("Port inputs are incorrect, fields must be filled correctly and not empty.");
+            $("#add-port-errors-display").show();
         }
     });
 	

@@ -23,8 +23,11 @@
                 <div class="form-group">
                     <label class="sr-only" for="add-type-group">Type</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon">Type&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
-                        <input type="text" class="form-control" id="add-type-group" required>
+                        <div class="input-group-addon">Port Type &nbsp;&nbsp;&nbsp;</div>
+							<select class="custom-select w-100" id="add-type-group">
+								<option value="TCP">TCP</option>
+								<option value="UDP">UDP</option>
+							</select>
                     </div>
                 </div>
 				<div class="form-group">
@@ -48,7 +51,7 @@
                         <input type="text" class="form-control" id="add-virus-group" required>
                     </div>
                 </div>
-                <div class="alert alert-danger text-center" role="alert" id="add-errors-display"></div>
+                <div class="alert alert-danger text-center" role="alert" id="add-port-errors-display"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
