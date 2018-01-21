@@ -458,7 +458,6 @@ $(document).ready(function () {
 	 
 	$("#save-ports").click(function() {
 		 
-		var ports = document.getElementsByClassName("portNumber");
 		var userName = document.getElementById("userName").innerHTML;
 		var datas = []
 		for(var i=0; i < arrayOpenedPorts.length; i++) {
@@ -484,11 +483,10 @@ $(document).ready(function () {
      *                                                                      *
      ************************************************************************/
 	function showUsersVulnerabilities(){
-		var ports = document.getElementsByClassName("portNumber");
 		
 		var datas = []
-		for(var i=0; i < ports.length; i++) {
-			datas[i]=ports[i].innerHTML;
+		for(var i=0; i < arrayOpenedPorts.length; i++) {
+			datas[i]=arrayOpenedPorts[i];
 		}
 		$.ajax({
             type: "POST",
@@ -497,11 +495,16 @@ $(document).ready(function () {
             cache: false,
             success: function (result){
 				$('#vulResponse').empty();
-				result = result.split("&");
-				for(var i=result.length-1; i>=0; i--){
-					$('#vulResponse').append(document.createElement("p").textContent=result[i]);
-					$('#vulResponse').append(document.createElement("br"));
+				if(result==""){
+					$('#vulResponse').append(document.createElement("p").textContent="No vulnerabilities found on your scaned ports");
+				}else{
+					result = result.split("&");
+					for(var i=result.length-1; i>=0; i--){
+						$('#vulResponse').append(document.createElement("p").textContent=result[i]);
+						$('#vulResponse').append(document.createElement("br"));
+					}
 				}
+				
                 $('#VulModal').modal('toggle');
             }
         })

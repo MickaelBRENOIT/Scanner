@@ -20,6 +20,7 @@
 				$bepis.="&";				
 			}
 		}
+		error_log(substr($bepis, 0, -1));
 		echo substr($bepis, 0, -1);
 		exit();
 	}
