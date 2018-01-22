@@ -470,7 +470,7 @@ $(document).ready(function () {
                 data: {id:datas, userName:userName},
                 cache: false,
                 success: function (result){
-                    alert("Sauvegarde");
+                    $("#successSaveModal").modal('toggle');
                 }
             })
 		
