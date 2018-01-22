@@ -50,6 +50,9 @@ if(isset($_FILES["xml"]) && file_exists("upload/".$_FILES["xml"]["name"])) {
 	$keys = ["Port", "Type", "Keyword", "Description", "Virus"];
 	$blank = "";
 	
+	$req_delete = $con->prepare("TRUNCATE TABLE`virus`");
+	$req_delete->execute();
+	
 	$req_insert_virus = $con->prepare("INSERT INTO `virus`(`port`, `type`, `keyword`, `description`, `virus`) VALUES (?,?,?,?,?)");
 	$req_insert_virus->bind_param("issss",$port, $type, $keyword, $description, $virus);
 	

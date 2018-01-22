@@ -18,7 +18,7 @@
     $con = Database::getConnection();
 	
 	//Permet d'avoir le nombre de scan effectué par l'utilisateur
-	$req_count = $con->prepareDB("SELECT scanDate from  savedport WHERE userId=(SELECT id FROM users WHERE username='$user')");
+	$req_count = $con->prepareDB("SELECT DISTINCT scanDate from  savedport WHERE userId=(SELECT id FROM users WHERE username='$user')");
 	$req_count->execute();
 	$result=$req_count->fetchAll(PDO::FETCH_ASSOC);
 	?>

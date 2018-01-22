@@ -4,9 +4,6 @@
     
     $con = Database::getConnection();
 	
-	$req_delete = $con->prepareDB("DELETE FROM `virus` WHERE 1");
-	$req_delete->execute();
-	
     $req = $con->prepareDB("SELECT * FROM virus");
     $req->execute();
     
